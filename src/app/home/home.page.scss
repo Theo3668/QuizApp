@@ -1,1 +1,24 @@
+.titleText {
+    text-align: center;
+}
 
+// centering the button
+.startBtn {
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.center {
+    --color: black;
+}
+
+//background vid
+#vid {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}

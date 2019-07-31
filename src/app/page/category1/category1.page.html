@@ -1,0 +1,122 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title class="titleText">Entertainment:Films</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+
+    <!-- <video autoplay muted loop id="vid">
+        <source src="/assets/vids/vid1.mp4" type="video/mp4">
+    </video> -->
+    <h2 class="counter" text-center>{{displayTime}}</h2>
+    <ion-slides #slides>
+
+        <!-- <ion-slide class="start-slide">
+            <div class="startBtn">
+                <ion-row center>
+                    <ion-col text-center>
+                        <ion-button color="primary" (click)="nextSlide()" class="center">Start!</ion-button>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-slide> -->
+
+        <ion-slide *ngFor="let item of questionData; let i = index;">
+
+            <!-- questions -->
+            <ion-card>
+                <ion-card-content>
+                    <ion-list-header class="headCenter">
+                        <ion-label><strong>Question {{i+1}}</strong></ion-label>
+                    </ion-list-header>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col width-50 offset-25>
+                                <h2>{{item.question}}</h2>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+
+                    <!-- answers -->
+                    <ion-list>
+                        <ion-radio-group [(ngModel)]="selectedAnswer">
+                            <ion-list-header class="headCenter">
+                                <ion-label><strong>Answers</strong></ion-label>
+                            </ion-list-header>
+
+                            <ion-item>
+                                <ion-label>{{item.correct_answer}}</ion-label>
+                                <ion-radio slot="start" (click)="rightAnswer()" value="{{item.correct_answer}}"></ion-radio>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>{{item.incorrect_answers}}</ion-label>
+                                <ion-radio slot="start" (click)="wrongAnswer()" value="{{item.incorrect_answers}}"></ion-radio>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>{{item.incorrect_answers[1]}}</ion-label>
+                                <ion-radio slot="start" (click)="wrongAnswer1()" value="{{item.incorrect_answers[1]}}"></ion-radio>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>{{item.incorrect_answers[2]}}</ion-label>
+                                <ion-radio slot="start" (click)="wrongAnswer2()" value="{{item.incorrect_answers[2]}}"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+
+                    <!-- answers alternative -->
+
+                    <!-- <ion-list no-lines radio-group>
+
+                        <ion-item *ngFor="let answer of question.incorrect_answers; let i = index;">
+                            <p>hello world</p>
+                            <ion-label>{{i+1}}. {{answer.answer}}</ion-label>
+                            <ion-radio (click)="selectAnswer(answer, question)" [checked]="answer.selected" [disabled]="hasAnswered"></ion-radio>
+
+                        </ion-item>
+
+                    </ion-list> -->
+
+                </ion-card-content>
+            </ion-card>
+
+        </ion-slide>
+
+        <!-- end slide -->
+        <ion-slide>
+            <div class="startBtn">
+                <ion-row center>
+                    <ion-col text-center>
+                        <ion-button color="primary" (click)="EndSlide()" class="center">Results!</ion-button>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-slide>
+
+    </ion-slides>
+
+    <!-- reset button -->
+    <div>
+        <ion-row>
+            <ion-col col='6' class="btnLeft">
+                <ion-button color="primary" (click)="restart()" class="reset_restart">restart quiz</ion-button>
+            </ion-col>
+            <ion-col col='6' class="btnRight">
+                <ion-button color="primary" (click)="reset()" class="reset_restart">reset!</ion-button>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <!-- next button -->
+    <!-- <div>
+        <ion-row center>
+            <ion-col text-center col='6'>
+                <ion-button color="primary" (click)="nextSlide()" class="center">Next!</ion-button>
+            </ion-col>
+        </ion-row>
+    </div> -->
+
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private route: Router) {}
+
+  category1(){
+    this.route.navigateByUrl('/category1');
+  }
+  category2(){
+    this.route.navigateByUrl('/category2');
+  }
+  category3(){
+    this.route.navigateByUrl('/category3');
+  }
 
 }
